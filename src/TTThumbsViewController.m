@@ -32,9 +32,9 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // global
 
-static CGFloat kThumbnailRowHeight = 79;
-static CGFloat kThumbSize = 75;
-static CGFloat kThumbSpacing = 4;
+static CGFloat kThumbnailRowHeight = 185; // 151 + 4 spacing
+static CGFloat kThumbSize = 168;
+static CGFloat kThumbSpacing = 17;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -184,8 +184,8 @@ static CGFloat kThumbSpacing = 4;
 }
 
 - (void)updateTableLayout {
-  self.tableView.contentInset = UIEdgeInsetsMake(TTBarsHeight()+4, 0, 0, 0);
-  self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(TTBarsHeight(), 0, 0, 0);
+  self.tableView.contentInset = UIEdgeInsetsMake(/*TTBarsHeight()+*/4, 0, 0, 0);
+  self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(/*TTBarsHeight()*/0, 0, 0, 0);
 }
 
 - (NSString*)URLForPhoto:(id<TTPhoto>)photo {

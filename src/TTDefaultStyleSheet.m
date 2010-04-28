@@ -54,13 +54,13 @@
     return
       [TTImageStyle styleWithImageURL:nil defaultImage:nil
                     contentMode:UIViewContentModeScaleAspectFill size:CGSizeZero next:
-      [TTSolidBorderStyle styleWithColor:RGBACOLOR(0,0,0,0.2) width:1 next:
-      [TTSolidFillStyle styleWithColor:RGBACOLOR(0,0,0,0.5) next:nil]]];
+      //[TTSolidBorderStyle styleWithColor:RGBACOLOR(0,0,0,0.2) width:1 next:
+      [TTSolidFillStyle styleWithColor:RGBACOLOR(0,0,0,0.5) next:nil]];
   } else {
     return
       [TTImageStyle styleWithImageURL:nil defaultImage:nil
-                    contentMode:UIViewContentModeScaleAspectFill size:CGSizeZero next:
-      [TTSolidBorderStyle styleWithColor:RGBACOLOR(0,0,0,0.2) width:1 next:nil]];
+						  contentMode:UIViewContentModeScaleAspectFill size:CGSizeZero next:nil];
+      //[TTSolidBorderStyle styleWithColor:RGBACOLOR(0,0,0,0.2) width:1 next:nil]];
   }
 }
 

@@ -16,8 +16,8 @@
       smallURL:@"http://farm4.static.flickr.com/3246/2957580101_d63ef56b15_t.jpg"
       size:CGSizeMake(960, 1280)] autorelease],
     [[[MockPhoto alloc]
-      initWithURL:@"http://farm4.static.flickr.com/3444/3223645618_13fe36887a_o.jpg"
-      smallURL:@"http://farm4.static.flickr.com/3444/3223645618_f5e2fa7fea_t.jpg"
+      initWithURL:@"bundle://defaultPerson.png"
+      smallURL:@"bundle://defaultPerson.png"
       size:CGSizeMake(320, 480)
       caption:@"These are the wood tiles that we had installed after the accident."] autorelease],
     [[[MockPhoto alloc]

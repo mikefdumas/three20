@@ -81,7 +81,7 @@ BOOL TTIsSupportedOrientation(UIInterfaceOrientation orientation) {
     case UIInterfaceOrientationPortrait:
     case UIInterfaceOrientationLandscapeLeft:
     case UIInterfaceOrientationLandscapeRight:
-      return YES;
+      return NO;
     default:
       return NO;
   }

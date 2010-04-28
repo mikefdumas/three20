@@ -23,8 +23,8 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-static CGFloat kSpacing = 4;
-static CGFloat kDefaultThumbSize = 75;
+static CGFloat kSpacing = 10;
+static CGFloat kDefaultThumbSize = 142;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -57,7 +57,7 @@ static CGFloat kDefaultThumbSize = 75;
 
 - (void)layoutThumbViews {
   CGRect thumbFrame = CGRectMake(self.thumbOrigin.x, self.thumbOrigin.y,
-                                 self.thumbSize, self.thumbSize);
+                                 142, 168);
 
   for (TTThumbView* thumbView in _thumbViews) {
     thumbView.frame = thumbFrame;

@@ -22,10 +22,11 @@
 
 - (id)initWithFrame:(CGRect)frame {
 	if (self = [super initWithFrame:frame]) {
-    self.backgroundColor = TTSTYLEVAR(thumbnailBackgroundColor);
+		self.backgroundColor = [UIColor clearColor];// TTSTYLEVAR(thumbnailBackgroundColor);
     self.clipsToBounds = YES;
     
     [self setStylesWithSelector:@"thumbView:"];
+	
 	}
 	return self;
 }

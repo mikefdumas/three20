@@ -49,7 +49,7 @@ static const NSInteger kActivityLabelTag = 96;
 
 - (void)loadImageDelayed {
   _loadTimer = nil;
-  [self.centerPhotoView loadImage];
+  [self.centerPhotoView loadVersion:TTPhotoVersionMedium fromNetwork:YES];
 }
 
 - (void)startImageLoadTimer:(NSTimeInterval)delay {
@@ -67,9 +67,9 @@ static const NSInteger kActivityLabelTag = 96;
   TTPhotoView* centerPhotoView = self.centerPhotoView;
   for (TTPhotoView* photoView in _scrollView.visiblePages.objectEnumerator) {
     if (photoView == centerPhotoView) {
-      [photoView loadPreview:NO];
+      [photoView loadVersion:TTPhotoVersionMedium fromNetwork:YES];
     } else {
-      [photoView loadPreview:YES];
+      [photoView loadVersion:TTPhotoVersionMedium fromNetwork:YES];
     }
   }
 
@@ -77,7 +77,7 @@ static const NSInteger kActivityLabelTag = 96;
     _delayLoad = NO;
     [self startImageLoadTimer:kPhotoLoadLongDelay];
   } else {
-    [centerPhotoView loadImage];
+    [centerPhotoView loadVersion:TTPhotoVersionMedium fromNetwork:YES];
   }
 }
 
@@ -90,7 +90,7 @@ static const NSInteger kActivityLabelTag = 96;
       _centerPhotoIndex+1, _photoSource.numberOfPhotos];
   }
 
-  if (![self.ttPreviousViewController isKindOfClass:[TTThumbsViewController class]]) {
+  /*if (![self.ttPreviousViewController isKindOfClass:[TTThumbsViewController class]]) {
     if (_photoSource.numberOfPhotos > 1) {
       self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
         initWithTitle:TTLocalizedString(@"See All", @"See all photo thumbnails")
@@ -100,7 +100,7 @@ static const NSInteger kActivityLabelTag = 96;
     }
   } else {
     self.navigationItem.rightBarButtonItem = nil;
-  }
+  }*/
 
   UIBarButtonItem* playButton = [_toolbar itemWithTag:1];
   playButton.enabled = _photoSource.numberOfPhotos > 1;
@@ -110,7 +110,7 @@ static const NSInteger kActivityLabelTag = 96;
 
 - (void)updateToolbarWithOrientation:(UIInterfaceOrientation)interfaceOrientation {
   if (UIInterfaceOrientationIsPortrait(interfaceOrientation)) {
-    _toolbar.height = TT_TOOLBAR_HEIGHT;
+	  _toolbar.height = 60; //TT_TOOLBAR_HEIGHT;
   } else {
     _toolbar.height = TT_LANDSCAPE_TOOLBAR_HEIGHT+1;
   }
@@ -371,12 +371,14 @@ static const NSInteger kActivityLabelTag = 96;
   _innerView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
   [self.view addSubview:_innerView];
   
-  _scrollView = [[TTScrollView alloc] initWithFrame:screenFrame];
+  _scrollView = [[TTScrollView alloc] initWithFrame:CGRectMake(0, 25, 320, 307)];
   _scrollView.delegate = self;
   _scrollView.dataSource = self;
   _scrollView.backgroundColor = [UIColor blackColor];
-  _scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-  [_innerView addSubview:_scrollView];
+	_scrollView.contentMode = UIViewContentModeCenter;
+	_scrollView.autoresizesSubviews = NO;
+	//_scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+	[_innerView addSubview:_scrollView];
   
   _nextButton = [[UIBarButtonItem alloc] initWithImage:
     TTIMAGE(@"bundle://Three20.bundle/images/nextIcon.png")
@@ -470,7 +472,7 @@ static const NSInteger kActivityLabelTag = 96;
     }
   }
 
-  [self showCaptions:show];
+	[self showCaptions:show];
   
   _toolbar.alpha = alpha;
   
